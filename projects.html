@@ -4,32 +4,41 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Projects | Sae'Veon Moore</title>
+    <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <header>
-      <h1>Projects</h1>
-      <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="projects.html">Projects</a></li>
-          <li><a href="about.html">About &amp; Contact</a></li>
-        </ul>
-      </nav>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <header class="site-header">
+      <div class="container">
+        <h1>Projects</h1>
+        <nav aria-label="Primary">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="projects.html" aria-current="page">Projects</a></li>
+            <li><a href="about.html">About &amp; Contact</a></li>
+          </ul>
+        </nav>
+      </div>
     </header>
 
-    <main>
-      <section>
-        <h2>Selected Work</h2>
-        <article>
-          <h3>Studio Portfolio</h3>
-          <p>A polished site designed to present a creative studio's services and recent case studies.</p>
-        </article>
+    <main id="main-content">
+      <div class="container">
+        <section class="card">
+          <h2>Selected Work</h2>
+          <div class="card-list">
+            <article class="project-card">
+              <h3>Studio Portfolio</h3>
+              <p>A polished site designed to present a creative studio's services and recent case studies.</p>
+            </article>
 
-        <article>
-          <h3>Event Landing Page</h3>
-          <p>An event-focused page with clear content hierarchy and simple calls to action.</p>
-        </article>
-      </section>
+            <article class="project-card">
+              <h3>Event Landing Page</h3>
+              <p>An event-focused page with clear content hierarchy and simple calls to action.</p>
+            </article>
+          </div>
+        </section>
+      </div>
     </main>
 
     <footer>

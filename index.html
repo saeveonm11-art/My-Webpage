@@ -7,52 +7,58 @@
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <header>
-      <h1>Sae'Veon Moore</h1>
-      <nav>
-        <ul>
-          <li><a href="#about">About</a></li>
-          <li><a href="#habits">Habits</a></li>
-          <li><a href="#why-it-matters">Why It Matters</a></li>
-        </ul>
-      </nav>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <header class="site-header">
+      <div class="container">
+        <h1>Sae'Veon Moore</h1>
+        <nav aria-label="Primary">
+          <ul>
+            <li><a href="index.html" aria-current="page">Home</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="about.html">About &amp; Contact</a></li>
+          </ul>
+        </nav>
+      </div>
     </header>
 
-    <main>
-      <section id="about">
-        <h2>About Me</h2>
-        <article>
-          <p class="highlight">I care deeply about creating a healthier relationship with the planet through everyday choices.</p>
-          <figure>
-            <img src="images/profile.svg" alt="A simple illustration of a person carrying a reusable bag and a plant">
-            <figcaption>A small reminder that mindful choices can be part of daily life.</figcaption>
-          </figure>
-        </article>
-      </section>
+    <main id="main-content">
+      <div class="container">
+        <section class="card" id="about">
+          <h2>About Me</h2>
+          <article>
+            <p class="highlight">I care deeply about creating a healthier relationship with the planet through everyday choices.</p>
+            <figure>
+              <img src="images/profile.svg" alt="A simple illustration of a person carrying a reusable bag and a plant">
+              <figcaption>A small reminder that mindful choices can be part of daily life.</figcaption>
+            </figure>
+          </article>
+        </section>
 
-      <section id="habits">
-        <h2>Habits I Value</h2>
-        <article>
-          <h3>Everyday Practices</h3>
-          <ul>
-            <li>Using reusable containers and bottles</li>
-            <li>Reducing waste by repairing what I can</li>
-            <li>Choosing local and seasonal food when possible</li>
-          </ul>
-        </article>
-      </section>
+        <section class="card" id="habits">
+          <h2>Habits I Value</h2>
+          <article>
+            <h3>Everyday Practices</h3>
+            <ul>
+              <li>Using reusable containers and bottles</li>
+              <li>Reducing waste by repairing what I can</li>
+              <li>Choosing local and seasonal food when possible</li>
+            </ul>
+          </article>
+        </section>
 
-      <section id="why-it-matters">
-        <h2>Why It Matters</h2>
-        <article>
-          <h3>Small Steps, Big Impact</h3>
-          <ol>
-            <li>They lower personal consumption.</li>
-            <li>They inspire others to make thoughtful choices.</li>
-            <li>They help build a more resilient community.</li>
-          </ol>
-        </article>
-      </section>
+        <section class="card" id="why-it-matters">
+          <h2>Why It Matters</h2>
+          <article>
+            <h3>Small Steps, Big Impact</h3>
+            <ol>
+              <li>They lower personal consumption.</li>
+              <li>They inspire others to make thoughtful choices.</li>
+              <li>They help build a more resilient community.</li>
+            </ol>
+          </article>
+        </section>
+      </div>
     </main>
 
     <footer>

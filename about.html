@@ -3,41 +3,149 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>About & Contact | Sae'Veon Moore</title>
+    <title>About &amp; Contact | Sae'Veon Moore</title>
+    <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <header>
-      <h1>About &amp; Contact</h1>
-      <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="projects.html">Projects</a></li>
-          <li><a href="about.html">About &amp; Contact</a></li>
-        </ul>
-      </nav>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <header class="site-header">
+      <div class="container">
+        <h1>About &amp; Contact</h1>
+        <nav aria-label="Primary">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="about.html" aria-current="page">About &amp; Contact</a></li>
+          </ul>
+        </nav>
+      </div>
     </header>
 
-    <main>
-      <section>
-        <h2>About Me</h2>
-        <p>I am interested in meaningful storytelling, accessible design, and learning new tools for the web.</p>
-      </section>
+    <main id="main-content">
+      <div class="container">
+        <section class="card">
+          <h2>About Me</h2>
+          <p>I am interested in meaningful storytelling, accessible design, and learning new tools for the web.</p>
+        </section>
 
-      <section>
-        <h2>Contact</h2>
-        <article>
-          <h3>Ways to Reach Me</h3>
-          <ul>
-            <li>Email: sae@example.com</li>
-            <li>Location: Port Arthur, TX</li>
-            <li>LinkedIn: linkedin.com/in/saeveonmoore</li>
-          </ul>
-        </article>
-      </section>
+        <section class="card">
+          <h2>Contact</h2>
+          <article>
+            <h3>Ways to Reach Me</h3>
+            <ul>
+              <li>Email: <a href="mailto:saeveon.moore@example.com">saeveon.moore@example.com</a></li>
+              <li>Phone: <a href="tel:+14093338202">(409) 333-8202</a></li>
+              <li>Location: Port Arthur, TX</li>
+              <li>LinkedIn: <a href="https://www.linkedin.com/in/saeveonmoore" target="_blank" rel="noreferrer">linkedin.com/in/saeveonmoore</a></li>
+            </ul>
+          </article>
+        </section>
+
+        <section class="card" id="contact-form">
+          <h2>Send a Message</h2>
+          <form class="contact-form" id="contact-form-element" novalidate>
+            <p class="form-help">Please share your name, a contact method, and a short message so I can reply thoughtfully.</p>
+            <div class="form-row">
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" required aria-describedby="name-error">
+              <p class="error-message" id="name-error" aria-live="polite"></p>
+            </div>
+
+            <div class="form-row">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" required aria-describedby="email-error">
+              <p class="error-message" id="email-error" aria-live="polite"></p>
+            </div>
+
+            <div class="form-row">
+              <label for="phone">Phone</label>
+              <input id="phone" name="phone" type="tel" inputmode="tel" pattern="^[0-9\-\s()]{7,15}$" aria-describedby="phone-error">
+              <p class="error-message" id="phone-error" aria-live="polite"></p>
+            </div>
+
+            <fieldset>
+              <legend>Preferred contact method</legend>
+              <div class="radio-group">
+                <label><input type="radio" name="contact-method" value="email"> Email</label>
+                <label><input type="radio" name="contact-method" value="phone"> Phone</label>
+                <label><input type="radio" name="contact-method" value="either"> Either is fine</label>
+              </div>
+            </fieldset>
+
+            <div class="form-row">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="5" required aria-describedby="message-error"></textarea>
+              <p class="error-message" id="message-error" aria-live="polite"></p>
+            </div>
+
+            <button type="submit">Send message</button>
+            <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+          </form>
+        </section>
+      </div>
     </main>
 
     <footer>
       <p>© 2026 Sae'Veon Moore</p>
     </footer>
+
+    <script>
+      const form = document.getElementById('contact-form-element');
+      const status = document.getElementById('form-status');
+
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const fields = [
+          { name: 'name', errorId: 'name-error', message: 'Please enter your name.' },
+          { name: 'email', errorId: 'email-error', message: 'Please enter a valid email address.' },
+          { name: 'message', errorId: 'message-error', message: 'Please share a short message.' }
+        ];
+
+        let valid = true;
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        fields.forEach((field) => {
+          const input = form.elements[field.name];
+          const error = document.getElementById(field.errorId);
+          const wrapper = input.closest('.form-row');
+          input.removeAttribute('aria-invalid');
+          wrapper.classList.remove('field-error');
+          error.textContent = '';
+
+          if (!input.value.trim()) {
+            valid = false;
+            input.setAttribute('aria-invalid', 'true');
+            wrapper.classList.add('field-error');
+            error.textContent = field.message;
+          } else if (field.name === 'email' && !emailPattern.test(input.value.trim())) {
+            valid = false;
+            input.setAttribute('aria-invalid', 'true');
+            wrapper.classList.add('field-error');
+            error.textContent = field.message;
+          }
+        });
+
+        const phoneInput = form.elements.phone;
+        const phoneError = document.getElementById('phone-error');
+        if (phoneInput.value.trim() && !/^[0-9\-\s()]{7,15}$/.test(phoneInput.value.trim())) {
+          valid = false;
+          phoneInput.setAttribute('aria-invalid', 'true');
+          phoneInput.closest('.form-row').classList.add('field-error');
+          phoneError.textContent = 'Please enter a phone number with 7 to 15 digits.';
+        }
+
+        if (!valid) {
+          status.textContent = 'Please correct the highlighted fields before sending your message.';
+          status.className = 'form-status error';
+          return;
+        }
+
+        form.reset();
+        status.textContent = 'Thank you for reaching out. I will reply soon.';
+        status.className = 'form-status success';
+      });
+    </script>
   </body>
 </html>
