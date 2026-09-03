@@ -83,6 +83,12 @@
             <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
           </form>
         </section>
+
+          <div class="card" id="api-card">
+            <h3>Random Quote</h3>
+            <button id="fetch-quote-btn" type="button">Get a random quote</button>
+            <div id="api-result" role="status" aria-live="polite" class="api-result"></div>
+          </div>
       </div>
     </main>
 
@@ -93,6 +99,22 @@
     <script>
       const form = document.getElementById('contact-form-element');
       const status = document.getElementById('form-status');
+
+      function clearFieldError(input) {
+        if (!input) return;
+        const wrapper = input.closest('.form-row');
+        if (wrapper) wrapper.classList.remove('field-error');
+        const error = document.getElementById(input.id + '-error');
+        if (error) error.textContent = '';
+        input.removeAttribute('aria-invalid');
+        status.textContent = '';
+        status.className = 'form-status';
+      }
+
+      ['name', 'email', 'message', 'phone'].forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) el.addEventListener('input', () => clearFieldError(el));
+      });
 
       form.addEventListener('submit', function (event) {
         event.preventDefault();
@@ -111,19 +133,19 @@
           const error = document.getElementById(field.errorId);
           const wrapper = input.closest('.form-row');
           input.removeAttribute('aria-invalid');
-          wrapper.classList.remove('field-error');
-          error.textContent = '';
+          if (wrapper) wrapper.classList.remove('field-error');
+          if (error) error.textContent = '';
 
           if (!input.value.trim()) {
             valid = false;
             input.setAttribute('aria-invalid', 'true');
-            wrapper.classList.add('field-error');
-            error.textContent = field.message;
+            if (wrapper) wrapper.classList.add('field-error');
+            if (error) error.textContent = field.message;
           } else if (field.name === 'email' && !emailPattern.test(input.value.trim())) {
             valid = false;
             input.setAttribute('aria-invalid', 'true');
-            wrapper.classList.add('field-error');
-            error.textContent = field.message;
+            if (wrapper) wrapper.classList.add('field-error');
+            if (error) error.textContent = field.message;
           }
         });
 
@@ -145,7 +167,43 @@
         form.reset();
         status.textContent = 'Thank you for reaching out. I will reply soon.';
         status.className = 'form-status success';
+
+        // After successful submit, fetch a bonus quote
+        fetchQuote();
       });
+
+      // Bonus: fetch a random quote from Quotable
+      const apiBtn = document.getElementById('fetch-quote-btn');
+      const apiResult = document.getElementById('api-result');
+
+      function fetchQuote() {
+        if (!apiResult) return;
+        apiResult.textContent = 'Loading…';
+        fetch('https://api.quotable.io/random')
+          .then((res) => {
+            if (!res.ok) throw new Error('Network response was not ok: ' + res.status);
+            return res.json();
+          })
+          .then((data) => {
+            apiResult.innerHTML = `<blockquote>"${escapeHtml(data.content)}"</blockquote><p>— ${escapeHtml(data.author)}</p>`;
+          })
+          .catch((err) => {
+            apiResult.textContent = 'Unable to load a quote right now. Please try again later.';
+            console.error('Fetch error:', err);
+          });
+      }
+
+      if (apiBtn) apiBtn.addEventListener('click', fetchQuote);
+
+      function escapeHtml(str) {
+        return String(str).replace(/[&<>\"']/g, (m) => ({
+          '&': '&amp;',
+          '<': '&lt;',
+          '>': '&gt;',
+          '\"': '&quot;',
+          "'": '&#39;'
+        }[m]));
+      }
     </script>
   </body>
 </html>
