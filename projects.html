@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Portfolio project highlights from Sae'Veon Moore, including accessible web design and community-centered digital work.">
     <title>Projects | Sae'Veon Moore</title>
     <link rel="stylesheet" href="styles.css">
   </head>
@@ -10,9 +11,17 @@
     <a class="skip-link" href="#main-content">Skip to main content</a>
 
     <header class="site-header">
-      <div class="container">
-        <h1>Projects</h1>
-        <nav aria-label="Primary">
+      <div class="container header-inner">
+        <div>
+          <p class="eyebrow">Selected work</p>
+          <h1>Projects</h1>
+        </div>
+
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
+          Menu
+        </button>
+
+        <nav class="site-nav" id="primary-nav" aria-label="Primary navigation">
           <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="projects.html" aria-current="page">Projects</a></li>
@@ -25,24 +34,72 @@
     <main id="main-content">
       <div class="container">
         <section class="card">
-          <h2>Selected Work</h2>
-          <div class="card-list">
+          <h2>Portfolio Highlights</h2>
+          <div class="card-list project-grid">
             <article class="project-card">
-              <h3>Studio Portfolio</h3>
-              <p>A polished site designed to present a creative studio's services and recent case studies.</p>
+              <span class="project-tag">Community website</span>
+              <h3>Neighborhood Resource Hub</h3>
+              <p>
+                Designed a clear, mobile-friendly site for a local community organization to spotlight events, volunteer opportunities,
+                and trusted neighborhood resources.
+              </p>
+              <ul>
+                <li>Improved scannability with simple navigation</li>
+                <li>Highlighted key calls to action</li>
+                <li>Built with accessibility-first HTML and CSS</li>
+              </ul>
             </article>
 
             <article class="project-card">
-              <h3>Event Landing Page</h3>
-              <p>An event-focused page with clear content hierarchy and simple calls to action.</p>
+              <span class="project-tag">Brand storytelling</span>
+              <h3>Creative Studio Showcase</h3>
+              <p>
+                Created an editorial-style portfolio for a small creative studio, balancing a strong visual identity with readable,
+                conversion-oriented content sections.
+              </p>
+              <ul>
+                <li>Structured case studies for easy browsing</li>
+                <li>Integrated contact and service messaging</li>
+                <li>Focused on mobile usability and visual hierarchy</li>
+              </ul>
             </article>
+
+            <article class="project-card">
+              <span class="project-tag">Event campaign</span>
+              <h3>Spring Learning Festival</h3>
+              <p>
+                Developed a landing page for a community learning event featuring schedules, speakers, and signup information in a clean,
+                welcoming layout.
+              </p>
+              <ul>
+                <li>Used clear content grouping for key event details</li>
+                <li>Designed to support busy mobile visitors</li>
+                <li>Created a low-friction registration experience</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="card skills-panel">
+          <h2>Skills in Practice</h2>
+          <div class="skills-list" aria-label="Core skills">
+            <span>HTML5</span>
+            <span>CSS3</span>
+            <span>Responsive Design</span>
+            <span>Accessibility</span>
+            <span>Content Strategy</span>
+            <span>JavaScript</span>
+            <span>UX Writing</span>
+            <span>Wireframing</span>
           </div>
         </section>
       </div>
     </main>
 
     <footer>
-      <p>© 2026 Sae'Veon Moore</p>
+      <p>© 2026 Sae'Veon Moore | Portfolio project draft.</p>
     </footer>
+
+    <script src="script.js"></script>
   </body>
 </html>

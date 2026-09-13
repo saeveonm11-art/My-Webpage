@@ -3,16 +3,25 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Sae'Veon Moore</title>
+    <meta name="description" content="Sae'Veon Moore is a front-end developer and digital storyteller focused on accessible, community-centered web experiences.">
+    <title>Sae'Veon Moore | Portfolio</title>
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
 
     <header class="site-header">
-      <div class="container">
-        <h1>Sae'Veon Moore</h1>
-        <nav aria-label="Primary">
+      <div class="container header-inner">
+        <div>
+          <p class="eyebrow">Digital Storyteller</p>
+          <h1>Sae'Veon Moore</h1>
+        </div>
+
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
+          Menu
+        </button>
+
+        <nav class="site-nav" id="primary-nav" aria-label="Primary navigation">
           <ul>
             <li><a href="index.html" aria-current="page">Home</a></li>
             <li><a href="projects.html">Projects</a></li>
@@ -24,45 +33,66 @@
 
     <main id="main-content">
       <div class="container">
-        <section class="card" id="about">
-          <h2>About Me</h2>
-          <article>
-            <p class="highlight">I care deeply about creating a healthier relationship with the planet through everyday choices.</p>
-            <figure>
-              <img src="images/profile.svg" alt="A simple illustration of a person carrying a reusable bag and a plant">
-              <figcaption>A small reminder that mindful choices can be part of daily life.</figcaption>
-            </figure>
+        <section class="hero card">
+          <div class="hero-copy">
+            <p class="eyebrow accent">I build thoughtful digital experiences</p>
+            <h2>Accessible design, community impact, and clear storytelling.</h2>
+            <p>
+              I am a web developer and content-focused creator who helps organizations share their work in ways that are welcoming,
+              informative, and easy to use across devices. My work blends front-end design, user experience, and practical problem solving.
+            </p>
+            <div class="button-row">
+              <a class="button primary" href="projects.html">View My Work</a>
+              <a class="button secondary" href="about.html">Contact Me</a>
+            </div>
+          </div>
+
+          <figure class="hero-figure">
+            <img src="images/profile.svg" alt="Illustration of a person with a reusable bag and plant representing sustainable digital practice">
+            <figcaption>Designing for people, purpose, and real-world impact.</figcaption>
+          </figure>
+        </section>
+
+        <section class="feature-grid" aria-label="Highlights">
+          <article class="card feature">
+            <h3>Front-End Development</h3>
+            <p>I create clean, responsive webpages that balance visual polish with strong accessibility standards.</p>
+          </article>
+
+          <article class="card feature">
+            <h3>Story-Driven Content</h3>
+            <p>I shape messaging so visitors understand the why behind a project and quickly connect with the mission.</p>
+          </article>
+
+          <article class="card feature">
+            <h3>Community-Centered Design</h3>
+            <p>I focus on usability and inclusion so digital experiences are easier for everyone to navigate and enjoy.</p>
           </article>
         </section>
 
-        <section class="card" id="habits">
-          <h2>Habits I Value</h2>
-          <article>
-            <h3>Everyday Practices</h3>
-            <ul>
-              <li>Using reusable containers and bottles</li>
-              <li>Reducing waste by repairing what I can</li>
-              <li>Choosing local and seasonal food when possible</li>
-            </ul>
-          </article>
-        </section>
-
-        <section class="card" id="why-it-matters">
-          <h2>Why It Matters</h2>
-          <article>
-            <h3>Small Steps, Big Impact</h3>
-            <ol>
-              <li>They lower personal consumption.</li>
-              <li>They inspire others to make thoughtful choices.</li>
-              <li>They help build a more resilient community.</li>
-            </ol>
-          </article>
+        <section class="card journey">
+          <h2>What I bring to a project</h2>
+          <div class="split-layout">
+            <div>
+              <ul class="check-list">
+                <li>Clear communication with stakeholders and audiences</li>
+                <li>Responsive design that works on phones, tablets, and desktops</li>
+                <li>Accessible HTML and thoughtful visual hierarchy</li>
+                <li>Content structure that supports both branding and usability</li>
+              </ul>
+            </div>
+            <div class="quote-panel">
+              <p class="quote">“Good design does not just look polished; it helps people feel informed, welcome, and confident.”</p>
+            </div>
+          </div>
         </section>
       </div>
     </main>
 
     <footer>
-      <p>Thanks for reading about a topic that matters to me.</p>
+      <p>© 2026 Sae'Veon Moore | Building accessible digital experiences.</p>
     </footer>
+
+    <script src="script.js"></script>
   </body>
 </html>
